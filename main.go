@@ -12,6 +12,7 @@ const port = "8080"
 func main() {
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		log.Println("Request:", r.Method, " : ", r.Host, " : ", r.UserAgent())
 		fmt.Fprintln(w, "Request by:", r.RemoteAddr)
 		fmt.Fprintln(w, "Served by:", runtime.GOOS)
 	})
