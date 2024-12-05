@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tiny-go-server
+  labels:
+    app: tiny-go-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tiny-go-server
+  template:
+    metadata:
+      labels:
+        app: tiny-go-server
+    spec:
+      containers:
+        - name: tiny-go-server
+          image: "roshanlc/tiny-go-server:0.0.1"
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+              name: tiny-go-svc
